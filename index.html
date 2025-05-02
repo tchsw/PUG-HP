@@ -1,7 +1,4 @@
-
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -16,92 +13,42 @@
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
-```
-#particles-js {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-.pug-text {
-  position: absolute;
-  left: 4%;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 68px;
-  font-weight: semibold;
-  transition: filter 0.3s ease;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.pug-text:hover {
-  filter: blur(2px) brightness(1.3) saturate(1.5);
-}
-
-.pug-main {
-  color: #ff3224;
-}
-
-.pug-sub {
-  color: #f0f0f0;
-  font-weight: 100;
-}
-
-    テキストがホバーされたとき、ホバーされているテキストのみが残像のようにグリッジするようにしてください。
-押下されたときのぼかしは削除してください。
-
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      height: 100vh;
-      background: #dfdfdf;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    #particles-js {
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      top: -20%;
+      left: -10%;
+      z-index: 0;
     }
 
-```
-#particles-js {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
+    .pug-text {
+      position: absolute;
+      left: 4%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 68px;
+      font-feature-settings:"c2pc"
+      cursor: pointer;
+      z-index: 1;
+    }
 
-.pug-text {
-  position: absolute;
-  left: 4%;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 68px;
-  font-weight: semibold;
-  transition: filter 0.3s ease;
-  cursor: pointer;
-  z-index: 1;
-}
+    .pug-main,
+    .pug-sub {
+      display: inline-block;
+    }
 
-.pug-text:hover {
-  filter: blur(2px) brightness(1.3) saturate(1.5);
-}
+    .pug-main {
+      color: #ff3224;
+      font-weight:500
+    }
 
-.pug-main {
-  color: #ff3224;
-}
+    .pug-sub {
+      color: #f0f0f0;
+      font-weight: 100;
+    }
 
-.pug-sub {
-  color: #f0f0f0;
-  font-weight: 100;
-}
-```
-
+    
   </style>
 </head>
 <body>
@@ -112,7 +59,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
   <script>
     particlesJS("particles-js", {
       particles: {
@@ -139,7 +85,7 @@
           straight: false,
           out_mode: "out",
           bounce: false,
-          attract: { enable: true, rotateX: 600, rotateY: 1200 }
+          attract: { enable: false } // ← ここで粒子の集合を防止
         }
       },
       interactivity: {
@@ -163,72 +109,5 @@
       retina_detect: true
     });
   </script>
-
-</body>
-</html>
-
-
-  </style>
-</head>
-<body>
-  <div id="particles-js"></div>
-
-  <div class="pug-text" id="pug">
-    <span class="pug-main">PUG</span> <span class="pug-sub">LLC.</span>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-  <script>
-    particlesJS("particles-js", {
-      particles: {
-        number: {
-          value: 240,
-          density: { enable: true, value_area: 800 }
-        },
-        color: { value: "#ff3224" },
-        shape: { type: "circle" },
-        opacity: { value: 0.6, random: true },
-        size: { value: 2, random: true },
-        line_linked: {
-          enable: true,
-          distance: 200,
-          color: "#ff3224",
-          opacity: 0.4,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 1.2,
-          direction: "none",
-          random: true,
-          straight: false,
-          out_mode: "out",
-          bounce: false,
-          attract: { enable: true, rotateX: 600, rotateY: 1200 }
-        }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: { enable: true, mode: "grab" },
-          onclick: { enable: true, mode: "repulse" },
-          resize: true
-        },
-        modes: {
-          grab: {
-            distance: 240,
-            line_linked: { opacity: 0.7 }
-          },
-          repulse: {
-            distance: 200,
-            duration: 0.6
-          }
-        }
-      },
-      retina_detect: true
-    });
-  </script>
-
 </body>
 </html>
