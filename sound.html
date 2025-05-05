@@ -30,18 +30,50 @@
       color: #f0f0f0;
     }
 
+    .toggle-button {
+      background-color: #444;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: background-color 0.2s ease;
+    }
+
+    .toggle-button:hover {
+      background-color: #666;
+    }
+
     audio {
-      width: 100%;
-      max-width: 300px;
-      outline: none;
-      filter: invert(1) hue-rotate(180deg); /* ダーク背景でも見やすく */
+      display: none; /* 見た目はカスタムボタンで制御するため非表示 */
     }
   </style>
 </head>
 <body>
   <div class="player-container">
     <h2>M3TOKYO Ambient Sound</h2>
-    <audio src="/M3TOKYO_2.wav" controls autoplay loop></audio>
+    <button class="toggle-button" id="toggleSound">音をオンにする</button>
+    <audio id="audio" src="/ambient-sound.wav" loop></audio>
   </div>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const button = document.getElementById('toggleSound');
+    let isPlaying = false;
+
+    button.addEventListener('click', () => {
+      if (!isPlaying) {
+        audio.play();
+        isPlaying = true;
+        button.textContent = '音をオフにする';
+      } else {
+        audio.pause();
+        isPlaying = false;
+        button.textContent = '音をオンにする';
+      }
+    });
+  </script>
 </body>
 </html>
