@@ -57,8 +57,8 @@
     const button = document.getElementById('toggleSound');
     let isPlaying = false;
 
-    // 動的にsrcを設定（ユーザー操作の直後に設定すると再生されやすい）
-    const audioSrc = '/M3TOKYO_2.wav';
+    // 修正済み：実際のファイル名に変更
+    const audioSrc = 'M3TOKYO_2.wav';
 
     button.addEventListener('click', () => {
       if (!isPlaying) {
