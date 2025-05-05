@@ -48,7 +48,7 @@
 </head>
 <body>
   <div class="player-container">
-    <button class="toggle-button" id="toggleSound">音をオンにする</button>
+    <button class="toggle-button" id="toggleSound">Sound on</button>
     <audio id="audio" preload="auto" loop></audio>
   </div>
 
@@ -68,7 +68,7 @@
         audio.play()
           .then(() => {
             isPlaying = true;
-            button.textContent = '音をオフにする';
+            button.textContent = 'Sound on';
           })
           .catch((err) => {
             console.error('再生エラー:', err);
@@ -77,7 +77,7 @@
       } else {
         audio.pause();
         isPlaying = false;
-        button.textContent = '音をオンにする';
+        button.textContent = 'Sound off';
       }
     });
   </script>
