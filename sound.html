@@ -68,7 +68,7 @@
         audio.play()
           .then(() => {
             isPlaying = true;
-            button.textContent = 'Sound on';
+            button.textContent = 'Stop Sound';
           })
           .catch((err) => {
             console.error('再生エラー:', err);
@@ -77,7 +77,7 @@
       } else {
         audio.pause();
         isPlaying = false;
-        button.textContent = 'Sound off';
+        button.textContent = 'Play Sound';
       }
     });
   </script>
