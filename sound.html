@@ -12,7 +12,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100%;
+      height: 100vh;
     }
 
     .player-container {
@@ -48,8 +48,8 @@
 </head>
 <body>
   <div class="player-container">
-    <button class="toggle-button" id="toggleSound">sound</button>
-    <audio id="audio" src="/ambient-sound.wav" loop></audio>
+    <button class="toggle-button" id="toggleSound">音をオンにする</button>
+    <audio id="audio" preload="auto" loop></audio>
   </div>
 
   <script>
@@ -57,11 +57,23 @@
     const button = document.getElementById('toggleSound');
     let isPlaying = false;
 
+    // 動的にsrcを設定（ユーザー操作の直後に設定すると再生されやすい）
+    const audioSrc = '/ambient-sound.wav';
+
     button.addEventListener('click', () => {
       if (!isPlaying) {
-        audio.play();
-        isPlaying = true;
-        button.textContent = '音をオフにする';
+        if (!audio.src) {
+          audio.src = audioSrc;
+        }
+        audio.play()
+          .then(() => {
+            isPlaying = true;
+            button.textContent = '音をオフにする';
+          })
+          .catch((err) => {
+            console.error('再生エラー:', err);
+            button.textContent = '再生できません';
+          });
       } else {
         audio.pause();
         isPlaying = false;
