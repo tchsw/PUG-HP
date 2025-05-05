@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sound Player</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    .player-container {
+      background-color: #222;
+      border-radius: 12px;
+      padding: 20px 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    .player-container h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: #f0f0f0;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 300px;
+      outline: none;
+      filter: invert(1) hue-rotate(180deg); /* ダーク背景でも見やすく */
+    }
+  </style>
+</head>
+<body>
+  <div class="player-container">
+    <h2>M3TOKYO Ambient Sound</h2>
+    <audio src="/M3TOKYO_2.wav" controls autoplay loop></audio>
+  </div>
+</body>
+</html>
