@@ -6,39 +6,34 @@
   <style>
     body {
       background-color: #111;
-      color: #fff;
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: 'Helvetica Neue', sans-serif;
+      height: 100%;
     }
 
     .player-container {
       background-color: #222;
-      border-radius: 12px;
-      padding: 20px 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      text-align: center;
-    }
-
-    .player-container h2 {
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: 1px;
-      color: #f0f0f0;
+      border-radius: 8px;
+      width: 320px;
+      height: 76px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .toggle-button {
       background-color: #444;
       border: none;
-      border-radius: 8px;
-      padding: 10px 20px;
+      border-radius: 6px;
+      padding: 8px 16px;
       color: white;
       font-size: 14px;
       cursor: pointer;
-      margin-top: 12px;
       transition: background-color 0.2s ease;
     }
 
@@ -47,13 +42,12 @@
     }
 
     audio {
-      display: none; /* 見た目はカスタムボタンで制御するため非表示 */
+      display: none;
     }
   </style>
 </head>
 <body>
   <div class="player-container">
-    <h2>M3TOKYO Ambient Sound</h2>
     <button class="toggle-button" id="toggleSound">音をオンにする</button>
     <audio id="audio" src="/ambient-sound.wav" loop></audio>
   </div>
