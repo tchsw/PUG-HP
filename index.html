@@ -27,35 +27,30 @@
       left: 4%;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 68px;
-      font-feature-settings:"c2pc"
-      cursor: pointer;
       z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .pug-main,
-    .pug-sub {
-      display: inline-block;
-    }
-
-    .pug-main {
-      color: #ff3224;
-      font-weight:500
+    .pug-text img {
+      height: 80px;
+      display: block;
     }
 
     .pug-sub {
       color: #f0f0f0;
+      font-size: 68px;
       font-weight: 100;
     }
-
-    
   </style>
 </head>
 <body>
   <div id="particles-js"></div>
 
   <div class="pug-text" id="pug">
-    <span class="pug-main">PUG</span> <span class="pug-sub">LLC.</span>
+    <img src="pug_logo_text_orange.png" alt="PUG Logo" />
+    <span class="pug-sub">LLC.</span>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -85,7 +80,7 @@
           straight: false,
           out_mode: "out",
           bounce: false,
-          attract: { enable: false } // ← ここで粒子の集合を防止
+          attract: { enable: false }
         }
       },
       interactivity: {
