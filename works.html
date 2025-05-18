@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WORK | Portfolio</title>
+  <style>
+    /* ベースリセット */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #F5F5DC;
+      color: #000;
+    }
+    /* スクロールコンテナ */
+    #scroll-container {
+      height: 100%;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: y mandatory;
+    }
+    /* ヒーローとセクションでスナップ */
+    #hero,
+    #scroll-container section {
+      scroll-snap-align: start;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 20px;
+    }
+    /* ヘッダー */
+    header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,10,0.6);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+    }
+    .logo { font-size: 20px; font-weight: semibold; color: #fefefe; }
+    nav { display: flex; }
+    nav a {
+      color: #fefefe;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+    nav a:not(:last-child)::after { content: ","; }
+    nav a:hover { color: #333; }
+    /* ページタイトル */
+    .page-title {
+      position: fixed;
+      top: 80px; left: 40px;
+      font-size: 64px; font-weight: 700;
+      letter-spacing: 2px; z-index: 900;
+      color: #000;
+    }
+    /* ヒーロー */
+    #hero { padding-top: 140px; padding-bottom: 40px; }
+    .hero-header {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-bottom: 40px;
+    }
+    .hero-header .item { font-size: 14px; color: #000; }
+    .hero-header .item:nth-child(3) { white-space: pre-line; }
+    .hero-header nav { display: flex; justify-content: flex-end; }
+    .hero-header nav a { margin-left: 32px; color: #000; font-size: 14px; text-decoration: none; transition: color 0.3s; }
+    .hero-header nav a:hover { color: #333; }
+    .hero-main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .hero-main .title { font-size: 64px; line-height: 1.1; font-weight: 700; color: #000; }
+    .hero-main .image { width: 100%; height: 300px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 14px; }
+    .hero-main .name { font-size: 48px; font-weight: 700; text-align: right; color: #000; }
+    .hero-footer { display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .hero-footer .arrow { font-size: 24px; color: #000; }
+    .hero-footer p { font-size: 14px; letter-spacing: 1px; color: #000; }
+    /* セクション共通 */
+    section h2 {
+      font-size: 32px; font-weight: 600;
+      margin-bottom: 24px;
+      border-left: 4px solid #444; padding-left: 16px;
+      color: #000;
+    }
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(6px);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, background 0.3s;
+      cursor: pointer;
+    }
+    .card:hover { transform: scale(1.05); background: rgba(255,255,255,0.1); }
+    .card .image { height: 180px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 14px; }
+    .card .caption { padding: 16px; font-size: 14px; color: #000; }
+    /* レスポンシブ */
+    @media (max-width: 768px) {
+      .page-title { font-size: 48px; top: 70px; left: 20px; }
+      nav a { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Top</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#work">Work</a>
+      <a href="#project">Project</a>
+      <a href="#about">About</a>
+      <a href="#store">Store</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <h1 class="page-title">WORK</h1>
+  <div id="scroll-container">
+    <!-- Hero Section -->
+    <div id="hero">
+      <div class="hero-header">
+        <div class="item">PUG LLC.</div>
+        <div class="item">Strategic Creative Solutions</div>
+        <div class="item">Based in Tokyo\Japan</div>
+        <nav>
+          <a href="#branding">Works</a>
+          <a href="#about">Agency</a>
+          <a href="#contact">Get in Touch</a>
+        </nav>
+      </div>
+      <div class="hero-main">
+        <div class="title">SELECTED<br>WORKS</div>
+        <div class="image">image</div>
+        <div class="name">PUG LLC.</div>
+      </div>
+      <div class="hero-footer">
+        <div class="arrow">↓</div>
+        <p>Crafting Experiences Through Design & Innovation</p>
+      </div>
+    </div>
+    <!-- Branding -->
+    <section id="branding">
+      <h2>Branding</h2>
+      <div class="work-grid">
+        <div class="card"><div class="image">image 京都国際映画祭</div><div class="caption">京都国際映画祭 / 京都芸術大学 × 吉本興業</div></div>
+        <div class="card"><div class="image">image BRUTUS × TOWER RECORDS</div><div class="caption">BRUTUS × TOWER RECORDS / 書籍プロモーション</div></div>
+        <div class="card"><div class="image">image 愛のこむらがえり</div><div class="caption">映画「愛のこむらがえり」ポスター</div></div>
+      </div>
+    </section>
+    <!-- Web -->
+    <section id="web">
+      <h2>Web</h2>
+      <div class="work-grid">
+        <div class="card"><div class="image">image Web Project 1</div><div class="caption">Web Project 1 Description</div></div>
+        <div class="card"><div class="image">image Web Project 2</div><div class="caption">Web Project 2 Description</div></div>
+      </div>
+    </section>
+    <!-- DTP・Goods design -->
+    <section id="dtp">
+      <h2>DTP・Goods design</h2>
+      <div class="work-grid">
+        <div class="card"><div class="image">image Goods design 1</div><div class="caption">Goods Design Project 1</div></div>
+        <div class="card"><div class="image">image DTP design 2</div><div class="caption">DTP Design Project 2</div></div>
+      </div>
+    </section>
+    <!-- Logo -->
+    <section id="logo">
+      <h2>Logo</h2>
+      <div class="work-grid">
+        <div class="card"><div class="image">image Logo 1</div><div class="caption">Logo Project 1</div></div>
+        <div class="card"><div class="image">image Logo 2</div><div class="caption">Logo Project 2</div></div>
+      </div>
+    </section>
+    <!-- Photos -->
+    <section id="photos">
+      <h2>Photos</h2>
+      <div class="work-grid">
+        <div class="card"><div class="image">image Photo 1</div><div class="caption">Photo Series 1</div></div>
+        <div class="card"><div class="image">image Photo 2</div><div class="caption">Photo Series 2</div></div>
+      </div>
+    </section>
+    <!-- Clothes -->
+    <section id="clothes">
+      <h2>Clothes</h2>
+      <div class="work-grid">
+        <div class="card"><div class="image">image Clothing 1</div><div class="caption">Clothing Design 1</div></div>
+        <div class="card"><div class="image">image Clothing 2</div><div class="caption">Clothing Design 2</div></div>
+      </div>
+    </section>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('scroll-container');
+      const sections = Array.from(container.querySelectorAll('section'));
+      let currentIndex = 0;
+      const threshold = window.innerHeight * 0.2;
+      let isThrottled = false;
+
+      container.addEventListener('scroll', () => {
+        if (isThrottled) return;
+        isThrottled = true;
+        setTimeout(() => { isThrottled = false; }, 100);
+
+        const scrollTop = container.scrollTop;
+        const currentOffset = sections[currentIndex].offsetTop;
+        if (scrollTop >= currentOffset + threshold && currentIndex < sections.length - 1) {
+          currentIndex++;
+          container.scrollTo({ top: sections[currentIndex].offsetTop });
+        } else if (scrollTop <= (sections[currentIndex].offsetTop - threshold) && currentIndex > 0) {
+          currentIndex--;
+          container.scrollTo({ top: sections[currentIndex].offsetTop });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
