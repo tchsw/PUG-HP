@@ -52,43 +52,27 @@
 
     /* レスポンシブ対応 */
     @media (max-width: 1024px) {
-      .pug-text img {
-        height: 120px;
-      }
-      .pug-sub {
-        font-size: 96px;
-      }
+      .pug-text img { height: 120px; }
+      .pug-sub { font-size: 96px; }
     }
-
     @media (max-width: 768px) {
-      .pug-text {
-        gap: 16px;
-      }
-      .pug-text img {
-        height: 80px;
-      }
-      .pug-sub {
-        font-size: 64px;
-      }
+      .pug-text { gap: 16px; }
+      .pug-text img { height: 80px; }
+      .pug-sub { font-size: 64px; }
     }
-
     @media (max-width: 480px) {
-      .pug-text {
-        gap: 12px;
-        left: 2%;
-      }
-      .pug-text img {
-        height: 60px;
-      }
-      .pug-sub {
-        font-size: 48px;
-      }
+      .pug-text { gap: 12px; left: 2%; }
+      .pug-text img { height: 60px; }
+      .pug-sub { font-size: 48px; }
     }
 
     /* ヘッダー */
     header {
       position: fixed;
-      top: 0; left: 0; width: 100%;
+      top: 0;
+      left: 50%;
+      width: 100vh;
+      transform: translateX(-50%);
       padding: 20px 40px;
       display: flex;
       justify-content: space-between;
@@ -106,7 +90,7 @@
       transition: color 0.3s;
     }
     nav a:not(:last-child)::after { content: ","; }
-    nav a:hover { color: #ff8888; }
+    nav a:hover { color: #333; }
 
   </style>
 </head>
@@ -134,49 +118,18 @@
   <script>
     particlesJS("particles-js", {
       particles: {
-        number: {
-          value: 240,
-          density: { enable: true, value_area: 800 }
-        },
+        number: { value: 240, density: { enable: true, value_area: 800 } },
         color: { value: "#ff3224" },
         shape: { type: "circle" },
         opacity: { value: 0.6, random: true },
         size: { value: 2, random: true },
-        line_linked: {
-          enable: true,
-          distance: 200,
-          color: "#ff3224",
-          opacity: 0.4,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 1.2,
-          direction: "none",
-          random: true,
-          straight: false,
-          out_mode: "out",
-          bounce: false,
-          attract: { enable: false }
-        }
+        line_linked: { enable: true, distance: 200, color: "#ff3224", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 1.2, random: true, straight: false, out_mode: "out", bounce: false }
       },
       interactivity: {
         detect_on: "canvas",
-        events: {
-          onhover: { enable: true, mode: "grab" },
-          onclick: { enable: true, mode: "repulse" },
-          resize: true
-        },
-        modes: {
-          grab: {
-            distance: 240,
-            line_linked: { opacity: 0.7 }
-          },
-          repulse: {
-            distance: 200,
-            duration: 0.6
-          }
-        }
+        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "repulse" }, resize: true },
+        modes: { grab: { distance: 240, line_linked: { opacity: 0.7 } }, repulse: { distance: 200, duration: 0.6 } }
       },
       retina_detect: true
     });
