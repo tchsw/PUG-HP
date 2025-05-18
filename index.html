@@ -30,7 +30,7 @@
       z-index: 1;
       display: flex;
       align-items: center;
-      flex-wrap: nowrap; /* 常に横並び */
+      flex-wrap: nowrap;
       gap: 24px;
       max-width: 90%;
       white-space: nowrap;
@@ -84,9 +84,45 @@
         font-size: 48px;
       }
     }
+
+    /* ヘッダー */
+    header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+    }
+    .logo { font-size: 20px; font-weight: 600; color: #fefefe; }
+    nav { display: flex; }
+    nav a {
+      color: #ff3224;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+    nav a:not(:last-child)::after { content: ","; }
+    nav a:hover { color: #ff8888; }
+
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo">Top</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="works.html">Works</a>
+      <a href="project.html">Project</a>
+      <a href="about.html">About</a>
+      <a href="store.html">Store</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
   <div id="particles-js"></div>
 
   <div class="pug-text" id="pug">
