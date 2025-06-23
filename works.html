@@ -8,74 +8,126 @@
     /* ベースリセット */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      height: 100%;
-      overflow: hidden;
+      height: 100%; overflow: hidden;
       font-family: 'Helvetica Neue', sans-serif;
-      background: #E79C63;
       color: #000;
     }
-    /* スクロールコンテナ（CSSのみでスナップ） */
+    /* 背景オーバーレイ */
+    #bg-overlay {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      transition: background 0.6s ease;
+    }
+    /* スクロールコンテナ */
     #scroll-container {
-      height: 100%;
-      overflow-y: auto;
+      height: 100%; overflow-y: auto;
       scroll-snap-type: y mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
     /* スナップ位置 */
-    #hero,
-    #scroll-container section {
+    #hero, #scroll-container section {
       scroll-snap-align: start;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 20px;
+      display: flex; flex-direction: column;
+      justify-content: center; padding: 0 20px;
     }
     /* ヘッダー */
     header {
-      position: fixed;
-      top: 0; left: 0; width: 100%;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(1,1,1,0);
-      backdrop-filter: blur(0px);
-      z-index: 1000;
+      position: fixed; top: 0; left: 0; width: 100%;
+      padding: 20px 40px; display: flex;
+      justify-content: space-between; align-items: center;
+      background: rgba(1,1,1,0); z-index: 1000;
     }
-    a.logo { font-size: 20px; font-weight: bold; color: #2d2d2d; text-decoration: none; }
+    a.logo { font-size: 20px; font-weight: bold;
+      color: #2d2d2d; text-decoration: none;
+    }
     nav { display: flex; }
-    nav a { color: #2d2d2d; text-decoration: none; font-size: 14px; transition: color 0.3s; }
+    nav a {
+      color: #2d2d2d; text-decoration: none;
+      font-size: 14px; transition: color 0.3s;
+    }
     nav a:not(:last-child)::after { content: ","; }
     nav a:hover { color: #ff3224; }
-    .page-title { position: fixed; top: 80px; left: 40px; font-size: 64px; font-weight: 700; letter-spacing: -0.1em; z-index: 900; color: #2d2d2d; }
-    /* テキスト共通黒 */
-    .hero-header .item,
-    .hero-main .title,
-    .hero-main .name,
-    .hero-footer .arrow,
-    .hero-footer p,
-    section h2,
-    .card .caption { color: #000; }
-    /* 各セクションスタイル */
-    .hero-header { display: grid; grid-template-columns: repeat(4,1fr); margin-bottom: 40px; }
+    .page-title {
+      position: fixed; top: 80px; left: 40px;
+      font-size: 64px; font-weight: 700;
+      letter-spacing: -0.1em; z-index: 900;
+      color: #2d2d2d;
+    }
+    /* テキスト共通 */
+    .hero-header .item, .hero-main .title,
+    .hero-main .name, .hero-footer .arrow,
+    .hero-footer p, section h2, .card .caption {
+      color: #000;
+    }
+    /* セクションスタイル */
+    .hero-header { display: grid;
+      grid-template-columns: repeat(4,1fr);
+      margin-bottom: 40px;
+    }
     .hero-header .item:nth-child(3) { white-space: pre-line; }
-    .hero-header nav { display: flex; justify-content: flex-end; }
+    .hero-header nav { display: flex;
+      justify-content: flex-end;
+    }
     .hero-header nav a { margin-left: 32px; color: #000; }
-    .hero-main { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; margin-bottom: 40px; }
-    .hero-main .image { width:100%;height:300px;background:rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:14px; }
-    .hero-footer { display:flex;align-items:center;justify-content:center;gap:16px; }
-    section h2 { font-size:32px;font-weight:600;margin-bottom:24px;border-left:4px solid #444;padding-left:16px; }
-    .work-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px; }
-    .card { background:rgba(0,0,0,0.2);backdrop-filter:blur(6px);border-radius:12px;overflow:hidden;transition:transform 0.3s,background 0.3s;cursor:pointer; }
-    .card:hover { transform:scale(1.05);background:rgba(255,255,255,0.1); }
-    .card .image { height:180px;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;color:#ccc;font-size:14px; }
+    .hero-main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 40px;
+      margin-bottom: 40px;
+    }
+    .hero-main .image {
+      width:100%; height:300px;
+      background:rgba(255,255,255,0.1);
+      border-radius:8px; display:flex;
+      align-items:center; justify-content:center;
+      color:#ccc; font-size:14px;
+    }
+    .hero-footer { display:flex;
+      align-items:center; justify-content:center;
+      gap:16px;
+    }
+    section h2 {
+      font-size:32px; font-weight:600;
+      margin-bottom:24px;
+      border-left:4px solid #444;
+      padding-left:16px;
+    }
+    .work-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+      gap:24px;
+    }
+    .card {
+      background:rgba(0,0,0,0.2);
+      backdrop-filter:blur(6px);
+      border-radius:12px; overflow:hidden;
+      transition:transform 0.3s, background 0.3s;
+      cursor:pointer; padding:20px;
+    }
+    .card:hover {
+      transform:scale(1.05);
+      background:rgba(255,255,255,0.1);
+    }
+    .card .image {
+      height:180px; background:rgba(255,255,255,0.05);
+      display:flex; align-items:center;
+      justify-content:center;
+      color:#ccc; font-size:14px;
+    }
     /* レスポンシブ */
-    @media(max-width:768px) { .page-title{font-size:48px;top:70px;left:20px;}nav a{font-size:12px;} }
+    @media(max-width:768px) {
+      .page-title { font-size:48px; top:70px; left:20px; }
+      nav a { font-size:12px; }
+    }
   </style>
 </head>
 <body>
+  <!-- 背景オーバーレイ -->
+  <div id="bg-overlay"></div>
+
   <header>
     <a href="index.html" class="logo">Top</a>
     <nav>
@@ -87,9 +139,12 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
+
   <h1 class="page-title">WORKS</h1>
+
   <div id="scroll-container">
-    <div id="hero">
+    <div id="hero" data-bg="linear-gradient(135deg, #E79C63, #F5A971)">
+      <!-- Hero Content -->
       <div class="hero-header">
         <div class="item">PUG LLC.</div>
         <div class="item">Strategic Creative Solutions</div>
@@ -110,7 +165,8 @@
         <p>Crafting Experiences Through Design & Innovation</p>
       </div>
     </div>
-    <section id="branding">
+
+    <section id="branding" data-bg="linear-gradient(135deg, #8BC34A, #AED581)">
       <h2>Branding</h2>
       <div class="work-grid">
         <div class="card"><div class="image">image 京都国際映画祭</div><div class="caption">京都国際映画祭 / 京都芸術大学 × 吉本興業</div></div>
@@ -118,35 +174,40 @@
         <div class="card"><div class="image">image 愛のこむらがえり</div><div class="caption">映画「愛のこむらがえり」ポスター</div></div>
       </div>
     </section>
-    <section id="web">
+
+    <section id="web" data-bg="linear-gradient(135deg, #42A5F5, #90CAF9)">
       <h2>Web</h2>
       <div class="work-grid">
         <div class="card"><div class="image">image Web Project 1</div><div class="caption">Web Project 1 Description</div></div>
         <div class="card"><div class="image">image Web Project 2</div><div class="caption">Web Project 2 Description</div></div>
       </div>
     </section>
-    <section id="dtp">
+
+    <section id="dtp" data-bg="linear-gradient(135deg, #FFB74D, #FFCC80)">
       <h2>DTP・Goods design</h2>
       <div class="work-grid">
         <div class="card"><div class="image">image Goods design 1</div><div class="caption">Goods Design Project 1</div></div>
         <div class="card"><div class="image">image DTP design 2</div><div class="caption">DTP Design Project 2</div></div>
       </div>
     </section>
-    <section id="logo">
+
+    <section id="logo" data-bg="linear-gradient(135deg, #BA68C8, #CE93D8)">
       <h2>Logo</h2>
       <div class="work-grid">
         <div class="card"><div class="image">image Logo 1</div><div class="caption">Logo Project 1</div></div>
         <div class="card"><div class="image">image Logo 2</div><div class="caption">Logo Project 2</div></div>
       </div>
     </section>
-    <section id="photos">
+
+    <section id="photos" data-bg="linear-gradient(135deg, #4DB6AC, #80CBC4)">
       <h2>Photos</h2>
       <div class="work-grid">
         <div class="card"><div class="image">image Photo 1</div><div class="caption">Photo Series 1</div></div>
         <div class="card"><div class="image">image Photo 2</div><div class="caption">Photo Series 2</div></div>
       </div>
     </section>
-    <section id="clothes">
+
+    <section id="clothes" data-bg="linear-gradient(135deg, #FF8A65, #FFAB91)">
       <h2>Clothes</h2>
       <div class="work-grid">
         <div class="card"><div class="image">image Clothing 1</div><div class="caption">Clothing Design 1</div></div>
@@ -154,6 +215,39 @@
       </div>
     </section>
   </div>
-  <!-- スクリプト不要: CSS のみでスクロールスナップを実現 -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const overlay = document.getElementById('bg-overlay');
+      const container = document.getElementById('scroll-container');
+      const sections = [
+        document.getElementById('hero'),
+        ...container.querySelectorAll('section')
+      ];
+      let currentIndex = 0;
+      const threshold = window.innerHeight * 0.3;
+      let isThrottled = false;
+
+      // 初期背景設定
+      overlay.style.background = sections[0].dataset.bg;
+
+      container.addEventListener('scroll', () => {
+        if (isThrottled) return;
+        isThrottled = true;
+        setTimeout(() => { isThrottled = false; }, 200);
+
+        const scrollTop = container.scrollTop;
+        const currentOffset = sections[currentIndex].offsetTop;
+
+        if (scrollTop >= currentOffset + threshold && currentIndex < sections.length - 1) {
+          currentIndex++;
+          overlay.style.background = sections[currentIndex].dataset.bg;
+        } else if (scrollTop <= currentOffset - threshold && currentIndex > 0) {
+          currentIndex--;
+          overlay.style.background = sections[currentIndex].dataset.bg;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
