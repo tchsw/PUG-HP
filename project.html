@@ -1,61 +1,187 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HASHILA LLC.</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project | PUG LLC.</title>
   <style>
-    * {
+    /* Base reset and typography */
+    html, body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      height: auto;
+      min-height: 100vh;
+      overflow-y: auto;
+      background: #ffffff;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #333333;
     }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background: #000;
-      color: #fff;
-      overflow: hidden;
-    }
-
-    .background-video {
+    /* Background particles (optional) */
+    #particles-js {
       position: fixed;
-      top: 0; left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      z-index: -1;
+      top: 0;
+      left: 0;
+      z-index: 0;
     }
 
-    .container {
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      padding: 20px 40px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      height: 100vh;
-      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(6px);
+      box-sizing: border-box;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333333;
+      text-decoration: none;
+    }
+    nav { display: flex; gap: 16px; }
+    nav a {
+      color: #ff3224;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+    nav a.active {
+      color: #333333;
+      font-weight: 600;
+    }
+    nav a:hover { color: #555555; }
+
+    /* Main content area */
+    main {
+      position: relative;
+      z-index: 1;
+      padding: 120px 4% 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .project-hero {
+      margin-bottom: 60px;
+    }
+    .project-hero h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .project-hero p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #555555;
     }
 
-    .logo {
-      font-size: 4vw;
-      letter-spacing: 0.2em;
-      font-weight: 600;
+    /* Gallery grid */
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+    .project-gallery img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    /* Details section */
+    .project-details h2 {
+      font-size: 32px;
+      margin-bottom: 12px;
+      color: #333333;
+    }
+    .project-details p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      color: #555555;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 14px;
+      color: #aaaaaa;
     }
   </style>
 </head>
 <body>
+  <header>
+    <a href="index.html" class="logo">PUG LLC.</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="works.html">Works</a>
+      <a href="project.html" class="active">Project</a>
+      <a href="about.html">About</a>
+      <a href="store.html">Store</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-  <!-- 背景動画 -->
-  <video class="background-video" autoplay loop muted playsinline>
-    <source src="your-background.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <div id="particles-js"></div>
 
-  <!-- 中央ロゴ -->
-  <div class="container">
-    <div class="logo">HASHILA LLC.</div>
-  </div>
+  <main>
+    <section class="project-hero">
+      <h1>Project Title</h1>
+      <p>Short subtitle or introduction describing the essence of this project.</p>
+    </section>
 
+    <section class="project-gallery">
+      <img src="project-image1.jpg" alt="Project Image 1" />
+      <img src="project-image2.jpg" alt="Project Image 2" />
+      <img src="project-image3.jpg" alt="Project Image 3" />
+      <img src="project-image4.jpg" alt="Project Image 4" />
+    </section>
+
+    <section class="project-details">
+      <h2>Overview</h2>
+      <p>Outline the main objectives, concept, and high-level goals of the project.</p>
+
+      <h2>Role & Contributions</h2>
+      <p>Describe responsibilities, deliverables, and any tools or technologies used.</p>
+
+      <h2>Timeline</h2>
+      <p>Brief project schedule or key milestones.</p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 PUG LLC. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 240, density: { enable: true, value_area: 800 } },
+        color: { value: "#ff3224" },
+        shape: { type: "circle" },
+        opacity: { value: 0.6, random: true },
+        size: { value: 2, random: true },
+        line_linked: { enable: true, distance: 200, color: "#ff3224", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 1.2, random: true, out_mode: "out" }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "repulse" }, resize: true },
+        modes: { grab: { distance: 240, line_linked: { opacity: 0.7 } }, repulse: { distance: 200, duration: 0.6 } }
+      },
+      retina_detect: true
+    });
+  </script>
 </body>
 </html>
